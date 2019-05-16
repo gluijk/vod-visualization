@@ -1,6 +1,5 @@
 # Visualización de patrones de consumo de series VoD
 # www.datosimagensonido.com
-# URL: https://www.datosimagensonido.com/2018/11/visualizacion-de-patrones-de-consumo-de.html
 
 library(data.table)
 library(png)
