@@ -1,5 +1,5 @@
-# Visualización de patrones de consumo de series VoD
-# www.datosimagensonido.com
+# VisualizaciÃ³n de patrones de consumo de series VoD
+# www.overfitting.net
 
 library(data.table)
 library(png)
@@ -13,7 +13,7 @@ DT=DT[order(NUM_CLIENTE, TITULO_SERIE, TIEMPO_TRAMO10MIN, CAPITULO_SERIE),]
 DT$ANGLE=DT$TIEMPO_TRAMO10MIN-min(DT$TIEMPO_TRAMO10MIN)
 DT$ANGLE=DT$ANGLE/max(DT$ANGLE)*2*pi
 
-LARGO=944  # +80px de márgenes = 1024px
+LARGO=944  # +80px de mÃ¡rgenes = 1024px
 CENTRO=LARGO/2
 NUMCAPS=15  # Consideramos hasta episodio 15
 RatioR=1.4
@@ -33,8 +33,8 @@ N7d=0
 Nre=0
 Nnotrazable=0
 
-fh=10/60  # Factor conversión min -> horas
-f=fh/24  # Factor conversión min -> días
+fh=10/60  # Factor conversiÃ³n min -> horas
+f=fh/24  # Factor conversiÃ³n min -> dÃ­as
 
 i=1
 CLIpre=DT$NUM_CLIENTE[i]
@@ -59,13 +59,13 @@ while (i <= FINAL) {
             if (DT$TIEMPO_TRAMO10MIN[i]-DT$TIEMPO_TRAMO10MIN[i-1] <= bwTh) {  # binge watching
                 imgbw=DrawLine(imgbw, CENTRO+xpre, CENTRO+ypre, CENTRO+xpos, CENTRO+ypos)
                 Nbw=Nbw+1
-            } else if (DIAFIN == DIAINI & HORAINI > 5) {  # 0 días (pero sin binge watching)
+            } else if (DIAFIN == DIAINI & HORAINI > 5) {  # 0 dÃ­as (pero sin binge watching)
                 img0d=DrawLine(img0d, CENTRO+xpre, CENTRO+ypre, CENTRO+xpos, CENTRO+ypos) 
                 N0d=N0d+1
-            } else if (DIAFIN == DIAINI+1) {  # 1 día
+            } else if (DIAFIN == DIAINI+1) {  # 1 dÃ­a
                 img1d=DrawLine(img1d, CENTRO+xpre, CENTRO+ypre, CENTRO+xpos, CENTRO+ypos) 
                 N1d=N1d+1
-            } else if (DIAFIN == DIAINI+7) {  # 7 días
+            } else if (DIAFIN == DIAINI+7) {  # 7 dÃ­as
                 img7d=DrawLine(img7d, CENTRO+xpre, CENTRO+ypre, CENTRO+xpos, CENTRO+ypos) 
                 N7d=N7d+1
             } else {  # Resto: episodios consecutivos pero con lapso <> bw, 0, 1, 7
@@ -92,7 +92,7 @@ while (i <= FINAL) {
 }
 
 
-# Guardamos gráficos normalizados separadamente
+# Guardamos grÃ¡ficos normalizados separadamente
 SaveBitmap(imgbw/max(imgbw), name='vodbw')
 SaveBitmap(img0d/max(img0d), name='vod0dia')
 SaveBitmap(img1d/max(img1d), name='vod1dia')
