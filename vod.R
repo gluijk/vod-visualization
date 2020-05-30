@@ -1,5 +1,6 @@
 # Visualización de patrones de consumo de series VoD
 # www.overfitting.net
+# https://www.overfitting.net/2018/11/visualizacion-de-patrones-de-consumo-de.html
 
 library(data.table)
 library(png)
